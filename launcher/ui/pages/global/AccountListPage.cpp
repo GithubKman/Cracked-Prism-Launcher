@@ -146,6 +146,7 @@ void AccountListPage::on_actionAddMicrosoft_triggered()
 }
 
 void AccountListPage::on_actionAddOffline_triggered()
+{
     // FIX: unlock non-premium account mode
 
     MinecraftAccountPtr account =
