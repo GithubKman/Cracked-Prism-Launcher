@@ -984,6 +984,8 @@ SET(LAUNCHER_SOURCES
     # GUI - dialogs
     ui/dialogs/AboutDialog.cpp
     ui/dialogs/AboutDialog.h
+    ui/dialogs/AddPasswordDialog.cpp
+    ui/dialogs/AddPasswordDialog.h
     ui/dialogs/ProfileSelectDialog.cpp
     ui/dialogs/ProfileSelectDialog.h
     ui/dialogs/ProfileSetupDialog.cpp

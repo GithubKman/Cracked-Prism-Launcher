@@ -25,15 +25,6 @@ void AddPasswordDialog::accept()
 {
     setUserInputsEnabled(false);
     ui->progressBar->setVisible(true);
-
-    // Setup the login task and start it
-    m_account = MinecraftAccount::createOffline(ui->userTextBox->text());
-    m_loginTask = m_account->loginOffline();
-    connect(m_loginTask.get(), &Task::failed, this, &AddPasswordDialog::onTaskFailed);
-    connect(m_loginTask.get(), &Task::succeeded, this, &AddPasswordDialog::onTaskSucceeded);
-    connect(m_loginTask.get(), &Task::status, this, &AddPasswordDialog::onTaskStatus);
-    connect(m_loginTask.get(), &Task::progress, this, &AddPasswordDialog::onTaskProgress);
-    m_loginTask->start();
 }
 
 void AddPasswordDialog::setUserInputsEnabled(bool enable)
@@ -93,12 +84,12 @@ void AddPasswordDialog::onTaskProgress(qint64 current, qint64 total)
 }
 
 // Public interface
-MinecraftAccountPtr AddPasswordDialog::newPassword(QWidget* parent, QString msg)
+void AddPasswordDialog::newPassword(QWidget* parent, QString msg)
 {
     AddPasswordDialog dlg(parent);
     dlg.ui->label->setText(msg);
     if (dlg.exec() == QDialog::Accepted) {
-        return dlg.m_account;
+        return;
     }
-    return nullptr;
+    return;
 }
