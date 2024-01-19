@@ -93,7 +93,7 @@ void AddPasswordDialog::onTaskProgress(qint64 current, qint64 total)
 }
 
 // Public interface
-MinecraftAccountPtr AddPasswordDialog::newAccount(QWidget* parent, QString msg)
+MinecraftAccountPtr AddPasswordDialog::newPassword(QWidget* parent, QString msg)
 {
     AddPasswordDialog dlg(parent);
     dlg.ui->label->setText(msg);

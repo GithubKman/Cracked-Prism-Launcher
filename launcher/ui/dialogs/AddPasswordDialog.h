@@ -16,7 +16,7 @@ class AddPasswordDialog : public QDialog {
    public:
     ~AddPasswordDialog();
 
-    static MinecraftAccountPtr newAccount(QWidget* parent, QString message);
+    static MinecraftAccountPtr newPassword(QWidget* parent, QString message);
 
    private:
     explicit AddPasswordDialog(QWidget* parent = 0);
