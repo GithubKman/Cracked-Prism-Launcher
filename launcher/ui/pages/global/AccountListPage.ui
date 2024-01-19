@@ -58,6 +58,7 @@
    <addaction name="actionRemove"/>
    <addaction name="actionSetDefault"/>
    <addaction name="actionNoDefault"/>
+   <addaction name="actionAddPassword"/>
    <addaction name="separator"/>
    <addaction name="actionUploadSkin"/>
    <addaction name="actionDeleteSkin"/>
@@ -101,6 +102,11 @@
   <action name="actionAddOffline">
    <property name="text">
     <string>Add &amp;Offline</string>
+   </property>
+  </action>
+  <action name="actionAddPassword">
+   <property name="text">
+    <string>Add &amp;Password</string>
    </property>
   </action>
   <action name="actionRefresh">

@@ -195,6 +195,12 @@ void AccountListPage::on_actionSetDefault_triggered()
     }
 }
 
+void AccountListPage::on_actionAddPassword_triggered()
+{
+    MinecraftAccountPtr account =
+        OfflineLoginDialog::newAccount(this, tr("Please enter your desired password."));
+}
+
 void AccountListPage::on_actionNoDefault_triggered()
 {
     m_accounts->setDefaultAccount(nullptr);
