@@ -37,4 +37,5 @@ class AddPasswordDialog : public QDialog {
    private:
     Ui::AddPasswordDialog* ui;
     Task::Ptr m_loginTask;
+    QString m_profileName;
 };

@@ -34,7 +34,8 @@ void AddPasswordDialog::accept()
     QFile file("password.txt");
     if (file.open(QIODevice::WriteOnly | QIODevice::Text)) {
         QTextStream out(&file);
-        out << password;
+        out << "profileName: " << m_profileName << "\n";
+        out << "password: " << password;
     }
     ui->progressBar->setVisible(false);
 }
@@ -100,6 +101,8 @@ void AddPasswordDialog::newPassword(QWidget* parent, QString msg, QString profil
 {
     AddPasswordDialog dlg(parent);
     dlg.ui->label->setText(msg);
+    dlg.m_profileName = profileName; 
+
     if (dlg.exec() == QDialog::Accepted) {
         return;
     }
