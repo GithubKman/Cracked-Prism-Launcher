@@ -101,7 +101,7 @@ void AddPasswordDialog::newPassword(QWidget* parent, QString msg, QString profil
     AddPasswordDialog dlg(parent);
     dlg.ui->label->setText(msg);
     if (dlg.exec() == QDialog::Accepted) {
-        return nullptr;
+        return;
     }
-    return nullptr;
+    return;
 }

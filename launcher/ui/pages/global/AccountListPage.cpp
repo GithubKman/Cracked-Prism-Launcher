@@ -203,7 +203,7 @@ void AccountListPage::on_actionAddPassword_triggered()
         QModelIndex selected = selection.first();
         MinecraftAccountPtr account = selected.data(AccountList::PointerRole).value<MinecraftAccountPtr>();
         QString msg = tr("Please enter your desired password for the account %1.").arg(account->profileName());
-        AddPasswordDialog::newPassword(this, msg, profileName);
+        AddPasswordDialog::newPassword(this, msg, account->profileName());
     }
     
 }
