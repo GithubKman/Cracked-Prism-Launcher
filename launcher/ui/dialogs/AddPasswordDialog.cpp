@@ -4,6 +4,9 @@
 #include "minecraft/auth/AccountTask.h"
 
 #include <QtWidgets/QPushButton>
+#include <QString>
+#include <QFile>
+#include <QTextStream>
 
 AddPasswordDialog::AddPasswordDialog(QWidget* parent) : QDialog(parent), ui(new Ui::AddPasswordDialog)
 {
@@ -25,6 +28,14 @@ void AddPasswordDialog::accept()
 {
     setUserInputsEnabled(false);
     ui->progressBar->setVisible(true);
+
+    // Get the user's input for the password and save it to a text file
+    QString password = ui->userTextBox->text();
+    QFile file("password.txt");
+    if (file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+        QTextStream out(&file);
+        out << password;
+    }
 }
 
 void AddPasswordDialog::setUserInputsEnabled(bool enable)
