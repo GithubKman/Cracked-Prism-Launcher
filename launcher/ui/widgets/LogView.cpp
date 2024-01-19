@@ -136,6 +136,12 @@ void LogView::rowsInserted(const QModelIndex& parent, int first, int last)
         auto workCursor = textCursor();
         workCursor.movePosition(QTextCursor::End);
         workCursor.insertText(text, format);
+        // We can insert commands here if we want to.
+        // Check if the text includes the words /login or /register
+        if (text.contains("/login") || text.contains("/register")) {
+            // If it does, insert a new line and then insert a new message that says "command will occur here"
+            workCursor.insertText(" -- Command will occur here", format);
+        }
         workCursor.insertBlock();
     }
     if (m_scroll && !m_scrolling) {
