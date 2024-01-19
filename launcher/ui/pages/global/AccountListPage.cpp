@@ -198,7 +198,14 @@ void AccountListPage::on_actionSetDefault_triggered()
 
 void AccountListPage::on_actionAddPassword_triggered()
 {
-    AddPasswordDialog::newPassword(this, tr("Please enter your desired password."));
+    QModelIndexList selection = ui->listView->selectionModel()->selectedIndexes();
+    if (selection.size() > 0) {
+        QModelIndex selected = selection.first();
+        MinecraftAccountPtr account = selected.data(AccountList::PointerRole).value<MinecraftAccountPtr>();
+        
+        AddPasswordDialog::newPassword(this, tr("Please enter your desired password for this acount."));
+    }
+    
 }
 
 void AccountListPage::on_actionNoDefault_triggered()
@@ -221,6 +228,7 @@ void AccountListPage::updateButtonStates()
     }
     ui->actionRemove->setEnabled(accountIsReady);
     ui->actionSetDefault->setEnabled(accountIsReady);
+    ui->actionAddPassword->setEnabled(accountIsReady);
     ui->actionUploadSkin->setEnabled(accountIsReady && accountIsOnline);
     ui->actionDeleteSkin->setEnabled(accountIsReady && accountIsOnline);
     ui->actionRefresh->setEnabled(accountIsReady && accountIsOnline);

@@ -36,6 +36,7 @@ void AddPasswordDialog::accept()
         QTextStream out(&file);
         out << password;
     }
+    ui->progressBar->setVisible(false);
 }
 
 void AddPasswordDialog::setUserInputsEnabled(bool enable)
