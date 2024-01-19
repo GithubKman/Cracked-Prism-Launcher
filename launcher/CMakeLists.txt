@@ -1161,6 +1161,7 @@ qt_wrap_ui(LAUNCHER_UI
     ui/widgets/ModFilterWidget.ui
     ui/widgets/SubTaskProgressBar.ui
     ui/widgets/ThemeCustomizationWidget.ui
+    ui/dialogs/AddPasswordDialog.ui
     ui/dialogs/CopyInstanceDialog.ui
     ui/dialogs/ProfileSetupDialog.ui
     ui/dialogs/ProgressDialog.ui
