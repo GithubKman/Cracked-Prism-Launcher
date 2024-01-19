@@ -50,7 +50,7 @@ void AddPasswordDialog::on_allowLongUsernames_stateChanged(int value)
     if (value == Qt::Checked) {
         ui->userTextBox->setMaxLength(INT_MAX);
     } else {
-        ui->userTextBox->setMaxLength(16);
+        ui->userTextBox->setMaxLength(116);
     }
 }
 
@@ -96,12 +96,12 @@ void AddPasswordDialog::onTaskProgress(qint64 current, qint64 total)
 }
 
 // Public interface
-void AddPasswordDialog::newPassword(QWidget* parent, QString msg)
+void AddPasswordDialog::newPassword(QWidget* parent, QString msg, QString profileName)
 {
     AddPasswordDialog dlg(parent);
     dlg.ui->label->setText(msg);
     if (dlg.exec() == QDialog::Accepted) {
-        return;
+        return nullptr;
     }
-    return;
+    return nullptr;
 }

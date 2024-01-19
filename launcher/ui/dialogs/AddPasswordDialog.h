@@ -16,7 +16,7 @@ class AddPasswordDialog : public QDialog {
    public:
     ~AddPasswordDialog();
 
-    static void newPassword(QWidget* parent, QString message);
+    static void newPassword(QWidget* parent, QString msg, QString profileName);
 
    private:
     explicit AddPasswordDialog(QWidget* parent = 0);
