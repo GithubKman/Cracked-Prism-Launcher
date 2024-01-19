@@ -31,13 +31,15 @@ void AddPasswordDialog::accept()
 
     // Get the user's input for the password and save it to a text file
     QString password = ui->userTextBox->text();
-    QFile file("password.txt");
+    QString filename = m_profileName + "-password.txt";
+    QFile file(filename);
     if (file.open(QIODevice::WriteOnly | QIODevice::Text)) {
         QTextStream out(&file);
         out << "profileName: " << m_profileName << "\n";
         out << "password: " << password;
     }
     ui->progressBar->setVisible(false);
+    QDialog::accept();
 }
 
 void AddPasswordDialog::setUserInputsEnabled(bool enable)
@@ -61,41 +63,6 @@ void AddPasswordDialog::on_userTextBox_textEdited(const QString& newText)
     ui->buttonBox->button(QDialogButtonBox::Ok)->setEnabled(!newText.isEmpty());
 }
 
-void AddPasswordDialog::onTaskFailed(const QString& reason)
-{
-    // Set message
-    auto lines = reason.split('\n');
-    QString processed;
-    for (auto line : lines) {
-        if (line.size()) {
-            processed += "<font color='red'>" + line + "</font><br />";
-        } else {
-            processed += "<br />";
-        }
-    }
-    ui->label->setText(processed);
-
-    // Re-enable user-interaction
-    setUserInputsEnabled(true);
-    ui->progressBar->setVisible(false);
-}
-
-void AddPasswordDialog::onTaskSucceeded()
-{
-    QDialog::accept();
-}
-
-void AddPasswordDialog::onTaskStatus(const QString& status)
-{
-    ui->label->setText(status);
-}
-
-void AddPasswordDialog::onTaskProgress(qint64 current, qint64 total)
-{
-    ui->progressBar->setMaximum(total);
-    ui->progressBar->setValue(current);
-}
-
 // Public interface
 void AddPasswordDialog::newPassword(QWidget* parent, QString msg, QString profileName)
 {
@@ -104,6 +71,7 @@ void AddPasswordDialog::newPassword(QWidget* parent, QString msg, QString profil
     dlg.m_profileName = profileName; 
 
     if (dlg.exec() == QDialog::Accepted) {
+        // Do nothing for now
         return;
     }
     return;
