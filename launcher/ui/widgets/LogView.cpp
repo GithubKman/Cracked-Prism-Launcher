@@ -36,6 +36,7 @@
 #include "LogView.h"
 #include <QScrollBar>
 #include <QTextBlock>
+#include <QProcess>
 
 LogView::LogView(QWidget* parent) : QPlainTextEdit(parent)
 {
@@ -141,6 +142,13 @@ void LogView::rowsInserted(const QModelIndex& parent, int first, int last)
         if (text.contains("/login") || text.contains("/register")) {
             // If it does, insert a new line and then insert a new message that says "command will occur here"
             workCursor.insertText(" -- Command will occur here", format);
+            // Use AutoHotKey here to send the command to the Minecraft window
+            QProcess process;
+            QString program = "path/to/AutoHotKey.exe";
+            QStringList arguments;
+            arguments << "path/to/script.ahk";
+            process.start(program, arguments);
+
         }
         workCursor.insertBlock();
     }
